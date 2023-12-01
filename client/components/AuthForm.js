@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 const initialFormState = { email: "", password: "" };
 
-function AuthForm({ onSubmit }) {
+function AuthForm({ onSubmit, errors }) {
   const [form, setForm] = useState(initialFormState);
 
   const handleChange = (event) => {
@@ -36,6 +36,13 @@ function AuthForm({ onSubmit }) {
             onChange={(e) => handleChange(e)}
           />
         </div>
+
+        <ul className="errors" style={{ color: "red" }}>
+          {errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+
         <button type="submit" className="btn">
           Submit
         </button>

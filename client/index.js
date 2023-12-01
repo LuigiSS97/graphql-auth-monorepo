@@ -7,7 +7,9 @@ import ReactDOM from "react-dom";
 import { Router, hashHistory, Route, IndexRoute } from "react-router";
 import App from "./components/App";
 import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignupForm";
 import { InMemoryCache } from "@apollo/client";
+import Dashboard from "./components/Dashboard";
 
 const client = new ApolloClient({
   dataIdFromObject: (o) => o.id,
@@ -26,7 +28,9 @@ const Root = () => {
     <ApolloProvider client={client}>
       <Router history={hashHistory}>
         <Route path="/" component={App}>
-          <Route path="/login" component={LoginForm}></Route>
+          <Route path="/login" component={LoginForm} />
+          <Route path="/signup" component={SignupForm} />
+          <Route path="/dashboard" component={Dashboard} />
         </Route>
       </Router>
     </ApolloProvider>
